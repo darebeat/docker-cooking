@@ -1,0 +1,40 @@
+version: '2'
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    hostname: mysql
+    ports:
+      - "3366:3306"
+    volumes:
+      - "~/data/mysql:/var/lib/mysql"
+    environment:
+      - MYSQL_USER=azkaban
+      - MYSQL_PASSWORD=azkaban
+      - MYSQL_DATABASE=azkaban
+      - MYSQL_ROOT_PASSWORD=mysql
+    networks:
+      - azk
+    tty: true
+
+  executor:
+    image: darebeat/azkaban-executor
+    links:
+      - mysql
+    networks:
+      - azk
+    tty: true
+
+  webserver:
+    image: darebeat/azkaban-webserver
+    ports:
+      - "8443:8443"
+    links:
+      - executor:azkaban-executor
+      - mysql
+    networks:
+      - azk
+    tty: true
+
+networks:
+  azk:
