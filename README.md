@@ -1,1 +1,3 @@
-## Docker cooking
+## README
+
+Docker SSH image.
