@@ -1,15 +1,18 @@
 version: '3'
 services:
-    mysql:
-        image: mysql:1.0-alpine
-        ports:
-            - "3306:3306"
-        container_name: mysql-alpine
-        restart: always
-        environment:
-            MYSQL_DATABASE: "blog"
-            MYSQL_USER: "toyee"
-            MYSQL_ROOT_PASSWORD: "mysql"
-            MYSQL_PASSWORD: "blog12345"
-        volumes:
-            - ./mysql:/opt
+  mysql:
+    image: mysql:5.7
+    networks:
+      - local
+    ports:
+      - "3307:3306"
+    container_name: mysql
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=mysql
+    volumes:
+      - "~/data/mysql:/var/lib/mysql"
+    tty: true
+
+networks:
+  local:
