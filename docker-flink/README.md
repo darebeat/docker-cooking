@@ -1,5 +1,6 @@
 ## README
 
+### Docker compose start env.
 ```sh
 # flink cluster run
 docker-compose -f docker-compose-all.yml up -d
@@ -9,14 +10,16 @@ docker-compose -f docker-compose-all.yml up -d
 docker-compose -f docker-compose-all.yml scale taskmanager=<N>
 ```
 
-##
+### maven start a project
 
-mvn archetype:generate								\
-  -DarchetypeGroupId=org.apache.flink				\
-  -DarchetypeArtifactId=flink-quickstart-java		\
-  -DarchetypeVersion=${1:-1.7.0}							\
-  -DgroupId=org.darebeat.flink					\
-  -DartifactId=flink								\
-  -Dversion=0.1										\
-  -Dpackage=org.darebeat.flink					\
+```sh
+mvn archetype:generate \
+  -DarchetypeGroupId=org.apache.flink \
+  -DarchetypeArtifactId=flink-quickstart-java \
+  -DarchetypeVersion=${1:-1.7.0} \
+  -DgroupId=org.darebeat.flink \
+  -DartifactId=flink \
+  -Dversion=0.1 \
+  -Dpackage=org.darebeat.flink \
   -DinteractiveMode=false
+```
