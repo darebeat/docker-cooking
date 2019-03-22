@@ -2,11 +2,11 @@
 
 ```sh
 # flink cluster run
-docker-compose up
+docker-compose -f docker-compose-all.yml up -d
 
 # Scale the cluster up or down to N TaskManagers:
 
-docker-compose scale taskmanager=<N>
+docker-compose -f docker-compose-all.yml scale taskmanager=<N>
 ```
 
 ##
